@@ -27,12 +27,12 @@ async def reloadData():
     roleMap.clear()
 
     for g in bot.guilds:
-        if g.id == 937034395209039872: ##Meu discord
-            for x in await loadAllRoles():
-                print(x)
-                role = get(g.roles, id=x[0])
-                roleMap[role.id] = roleSystem(id=role.id, roleName=role.name, nivel=x[2], role=role, regras=x[3])
-        elif g.id == 941012595006124063: ##Discord de Naruto
+        #if g.id == 937034395209039872: ##Meu discord
+        #    for x in await loadAllRoles():
+        #        print(x)
+        #        role = get(g.roles, id=x[0])
+        #        roleMap[role.id] = roleSystem(id=role.id, roleName=role.name, nivel=x[2], role=role, regras=x[3])
+        if g.id == 941012595006124063: ##Discord de Naruto
             for x in await loadAllRoles():
                 role = get(g.roles, id=x[0])
                 roleMap[role.id] = roleSystem(id=role.id, roleName=role.name, nivel=x[2], role=role, regras=x[3])
