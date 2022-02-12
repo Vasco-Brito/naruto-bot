@@ -2,12 +2,13 @@ import discord
 
 class roleSystem:
 
-    def __init__(self, id, roleName, nivel, role='', regras=''):
+    def __init__(self, id, roleName, nivel, role='', regras='', serverid=''):
         self.id = id
         self.roleName = roleName
         self.nivel = nivel
         self.role = role
         self.regras = regras
+        self.serverid = serverid
 
     def setId(self, id):
         self.id = id
@@ -31,3 +32,5 @@ class roleSystem:
 
     def getRegras(self):
         return self.regras
+    def getServerId(self):
+        return self.serverid

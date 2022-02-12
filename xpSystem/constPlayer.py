@@ -23,7 +23,7 @@ class xpPlayer:
         for x in user.roles:
             if x.name != '@everyone':
                 roleId = int(x.id)
-                if roleMap[roleId]:
+                if roleMap.__contains__(roleId):
                     if json.loads(roleMap[roleId].getRegras())['ganho'] == 'False':
                         return
         xpNextLevel = self.nextLevelXP(self.getNivel())
@@ -31,12 +31,10 @@ class xpPlayer:
             self.level += 1
             self.xp = self.xp + xp - xpNextLevel
             for x in roleMap:
-                print(roleMap[x].nivel)
                 if self.level == roleMap[x].nivel:
                     await user.add_roles(roleMap[x].role)
         else:
             self.xp += 50
-            print(self.xp)
 
     def setRanking(self, ranking):
         self.ranking = ranking
