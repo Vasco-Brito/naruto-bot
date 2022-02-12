@@ -34,7 +34,7 @@ class xpPlayer:
                 if self.level == roleMap[x].nivel:
                     await user.add_roles(roleMap[x].role)
         else:
-            self.xp += 50
+            self.xp += xp
 
     def setRanking(self, ranking):
         self.ranking = ranking
