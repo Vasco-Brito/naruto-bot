@@ -3,9 +3,9 @@ from utils.db.connection import getconn, connectToDatabase
 from xpSystem.constPlayer import xpPlayer
 
 
-def loadAll():
+async def loadAll():
     if not getconn().is_connected():
-        await connectToDatabase()
+        connectToDatabase()
     try:
         cursor = getconn().cursor()
         cursor.execute('Select * from discordUsers')
@@ -16,7 +16,7 @@ def loadAll():
 
 async def hasUserID(userID):
     if not getconn().is_connected():
-        await connectToDatabase()
+        connectToDatabase()
     try:
         cursor = getconn().cursor()
 
@@ -31,7 +31,7 @@ async def hasUserID(userID):
 
 async def insertUser(userID):
     if not getconn().is_connected():
-        await connectToDatabase()
+        connectToDatabase()
     try:
         cursor = getconn().cursor()
 
@@ -42,7 +42,7 @@ async def insertUser(userID):
 
 async def getUserXP(userID):
     if not getconn().is_connected():
-        await connectToDatabase()
+        connectToDatabase()
     try:
         cursor = getconn().cursor()
 
@@ -56,7 +56,7 @@ async def getUserXP(userID):
 
 def updateDb(lista):
     if not getconn().is_connected():
-        await connectToDatabase()
+        connectToDatabase()
     try:
         cursor = getconn().cursor()
 
