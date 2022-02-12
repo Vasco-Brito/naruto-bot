@@ -43,7 +43,7 @@ def xpSaveTimer(f_stop):
         if timerRunning:
             print(f'{datetime.datetime.now()} - A atualizar um total de {xpUsers.__len__()} utilizadores')
             updateDb(xpUsers)
-        threading.Timer(10, xpSaveTimer, [f_stop]).start()
+        threading.Timer(60*5, xpSaveTimer, [f_stop]).start()
     if timerRunning:
         xpUsers.clear()
 
