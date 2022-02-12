@@ -5,7 +5,7 @@ from xpSystem.constPlayer import xpPlayer
 
 async def loadAllRoles():
     if not getconn().is_connected():
-        await connectToDatabase()
+        connectToDatabase()
     try:
         cursor = getconn().cursor()
 
@@ -18,7 +18,7 @@ async def loadAllRoles():
 
 async def newRole(role: discord.Role, level):
     if not getconn().is_connected():
-        await connectToDatabase()
+        connectToDatabase()
     try:
         cursor = getconn().cursor()
 

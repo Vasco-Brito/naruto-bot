@@ -43,13 +43,13 @@ def xpSaveTimer(f_stop):
         if timerRunning:
             print(f'{datetime.datetime.now()} - A atualizar um total de {xpUsers.__len__()} utilizadores')
             updateDb(xpUsers)
-        threading.Timer(60, xpSaveTimer, [f_stop]).start()
+        threading.Timer(10, xpSaveTimer, [f_stop]).start()
     if timerRunning:
         xpUsers.clear()
 
 @bot.event
 async def on_ready():
-    await connectToDatabase()
+    connectToDatabase()
     xpSaveTimer(f_stop)
     for g in bot.guilds:
         if g.id == 937034395209039872: ##Meu discord
