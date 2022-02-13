@@ -2,6 +2,7 @@ import datetime
 import random
 import threading
 import discord
+import time
 
 from discord.ext import commands
 from discord.ext.commands import has_permissions
@@ -17,7 +18,7 @@ token = 'OTQxNzAwMTgyNjI4NzczOTU5.YgZwow.JGJTJgZ5apiLGKRZzp7qlLiPUJ8'
 xpUsers = { }
 roleMap = { }
 f_stop = threading.Event()
-timerRunning = True;
+timerRunning = True
 
 async def reloadData():
     global timerRunning
@@ -33,7 +34,7 @@ async def reloadData():
         #        role = get(g.roles, id=x[0])
         #        roleMap[role.id] = roleSystem(id=role.id, roleName=role.name, nivel=x[2], role=role, regras=x[3])
         if g.id == 941012595006124063: ##Discord de Naruto
-            for x in await loadAllRoles():
+            for x in loadAllRoles():
                 role = get(g.roles, id=x[0])
                 roleMap[role.id] = roleSystem(id=role.id, roleName=role.name, nivel=x[2], role=role, regras=x[3])
     timerRunning = True
@@ -50,6 +51,7 @@ def xpSaveTimer(f_stop):
 @bot.event
 async def on_ready():
     connectToDatabase()
+    time.sleep(5)
     xpSaveTimer(f_stop)
     for g in bot.guilds:
         #if g.id == 937034395209039872: ##Meu discord
@@ -58,9 +60,9 @@ async def on_ready():
         #        roleMap[role.id] = roleSystem(id=role.id, roleName=role.name, nivel=x[2], role=role, regras=x[3])
         if g.id == 941012595006124063: ##Discord de Naruto
             for x in await loadAllRoles():
-                if x[4] == 941012595006124063:
-                    role = get(g.roles, id=x[0])
-                    roleMap[role.id] = roleSystem(id=role.id, roleName=role.name, nivel=x[2], role=role, regras=x[3])
+                #if x[4] == 941012595006124063:
+                role = get(g.roles, id=x[0])
+                roleMap[role.id] = roleSystem(id=role.id, roleName=role.name, nivel=x[2], role=role, regras=x[3])
     print("O bot esta a correr...")
 
 
@@ -108,6 +110,17 @@ async def recarregarDB(ctx):
         await ctx.send(f'{ctx.author.mention} a base de dados foi recarregada')
     else:
         print("Sem permissão")
+
+@bot.command(name="reloadRoles")
+async def recheckRoles(ctx):
+    if ctx.author.id == 199582033809244161:
+        author = ctx.send
+        authorId = ctx.author.id
+        ##await xpUsers[authorId].increaseXp(random.randint(1, 10), message.author, roleMap, bot)
+        for x in roleMap:
+            if xpUsers[authorId].level >= roleMap[x].nivel:
+                print("Entrei aqui")
+                await ctx.author.add_roles(roleMap[x].role)
 
 bot.run(token)
 

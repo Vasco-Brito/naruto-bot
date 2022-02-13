@@ -20,12 +20,12 @@ class xpPlayer:
     def getXp(self):
         return self.xp
     async def increaseXp(self, xp, user, roleMap, bot):
-        for x in user.roles:
-            if x.name != '@everyone':
-                roleId = int(x.id)
-                if roleMap.__contains__(roleId):
-                    if json.loads(roleMap[roleId].getRegras())['ganho'] == 'False':
-                        return
+        #for x in user.roles:
+        #    if x.name != '@everyone':
+        #        roleId = int(x.id)
+        #        if roleMap.__contains__(roleId):
+        #            if json.loads(roleMap[roleId].getRegras())['ganho'] == 'False':
+        #                return
         xpNextLevel = self.nextLevelXP(self.getNivel())
         if self.xp+xp >= xpNextLevel:
             self.level += 1

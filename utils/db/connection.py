@@ -1,8 +1,6 @@
 import mysql.connector
 from mysql.connector import Error
 
-dbConnect = ''
-
 def connectToDatabase():
     try:
         conn = mysql.connector.connect(host='database-1.cyk0yprojvvx.us-east-2.rds.amazonaws.com',
