@@ -27,6 +27,7 @@ class xpPlayer:
         #            if json.loads(roleMap[roleId].getRegras())['ganho'] == 'False':
         #                return
         xpNextLevel = self.nextLevelXP(self.getNivel())
+        xpNextLevel = xpNextLevel * 2
         if self.xp+xp >= xpNextLevel:
             self.level += 1
             self.xp = self.xp + xp - xpNextLevel

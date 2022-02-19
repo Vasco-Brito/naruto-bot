@@ -122,5 +122,9 @@ async def recheckRoles(ctx):
                 print("Entrei aqui")
                 await ctx.author.add_roles(roleMap[x].role)
 
+@bot.command(name="eventXp")
+async def eventoDeXp(ctx):
+    ...
+
 bot.run(token)
 
